@@ -7,7 +7,7 @@ import base64
 import sys
 import os
 import hashlib
-import ConfigParser
+import configparser
 import logging
 import time
 import datetime
@@ -65,10 +65,11 @@ class MessageService():
 if __name__ == "__main__":
 
     # Read Config
-    config_ini = ConfigParser.ConfigParser()
+    config_ini = configparser.ConfigParser()
     config_ini.read(sys.argv[1])
 
     # get the password from a named config file ociemail.config
+    PASSWORD_SMTP_FILE = config_ini['DEFAULT']['PASSWORD_SMTP_FILE']
     with open(PASSWORD_SMTP_FILE) as f:
         password_smtp = f.readline().strip()
 
