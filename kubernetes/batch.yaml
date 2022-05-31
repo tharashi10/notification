@@ -1,0 +1,14 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: sample-batch
+spec:
+  template:
+    spec:
+      containers:
+      - name: notify-sample
+        image: nrt.ocir.io/***/sample/notify:0.0.1
+      restartPolicy: Never
+      imagePullSecrets:
+      - name: ocir-secret
+  backoffLimit: 1
